@@ -32,18 +32,18 @@ jobs:
 
       - name: Authenticate with RStudio Connect
         run: |
-          rsconnect::addConnectServer(url = ${{ env.RSCONNECT_URL}},
+          rsconnect::addConnectServer(url = "${{ env.RSCONNECT_URL}}",
                             name = "rsc_server")
-          rsconnect::connectApiUser(account = ${{ env.RSCONNECT_USERNAME }},
+          rsconnect::connectApiUser(account = "${{ env.RSCONNECT_USERNAME }}",
                           server = "rsc_server",
-                          apiKey = ${{ env.RSCONNECT_APIKEY }},
+                          apiKey = "${{ env.RSCONNECT_APIKEY }}",
                           quiet = FALSE)
         shell: Rscript {0}
 
       - name: Deploy App
         run: |
           rsconnect::deployApp(appDir = 'app',
-                     appName = ${{ env.APP_NAME }},
-                     account = ${{ env.RSCONNECT_USERNAME }},
+                     appName = "${{ env.APP_NAME }}",
+                     account = "${{ env.RSCONNECT_USERNAME }}",
                      server = "rsc_server")
         shell: Rscript {0}
