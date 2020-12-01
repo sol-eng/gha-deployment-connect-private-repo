@@ -32,11 +32,11 @@ jobs:
 
       - name: Authenticate with RStudio Connect
         run: |
-          rsconnect::addConnectServer(url = ${RSCONNECT_URL},
+          rsconnect::addConnectServer(url = ${{ RSCONNECT_URL}},
                             name = "rsc_server")
-          rsconnect::connectApiUser(account = ${RSCONNECT_USERNAME},
+          rsconnect::connectApiUser(account = ${{RSCONNECT_USERNAME}},
                           server = "rsc_server",
-                          apiKey = ${RSCONNECT_APIKEY},
+                          apiKey = ${{RSCONNECT_APIKEY}},
                           quiet = FALSE)
         shell: Rscript {0}
 
