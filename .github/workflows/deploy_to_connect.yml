@@ -43,7 +43,7 @@ jobs:
       - name: Deploy App
         run: |
           rsconnect::deployApp(appDir = 'app',
-                     appName = ${{APP_NAME}},
-                     account = ${{RSCONNECT_USERNAME}},
+                     appName = ${{ env.APP_NAME }},
+                     account = ${{ env.RSCONNECT_USERNAME }},
                      server = "rsc_server")
         shell: Rscript {0}
