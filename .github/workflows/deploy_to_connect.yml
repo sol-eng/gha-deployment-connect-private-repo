@@ -1,0 +1,49 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+
+name: deploy_connect
+
+jobs:
+  pkgdown:
+    runs-on: macOS-latest
+    env:
+      APP_NAME: "GHA_TEST"
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RSCONNECT_URL: ${{ secrets.URL }}
+      RSCONNECT_USERNAME: ${{ secrets.USERNAME }}
+      RSCONNECT_APIKEY: ${{ secrets.APIKEY }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+
+      - name: Install renv and rsconnect
+        run: |
+          install.packages(c("renv", "rsconnect"))
+        shell: Rscript {0}
+
+      - name: Restore Environment
+        run: |
+          renv::restore()
+        shell: Rscript {0}
+
+      - name: Authenticate with RStudio Connect
+        run: |
+          rsconnect::addConnectServer(url = $RSCONNECT_URL,
+                            name = "rsc_server")
+          rsconnect::connectApiUser(account = $RSCONNECT_USERNAME,
+                          server = "rsc_server",
+                          apiKey = $RSCONNECT_APIKEY,
+                          quiet = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy App
+        run: |
+          rsconnect::deployApp(appDir = 'app',
+                     appName = $APP_NAME,
+                     account = $RSCONNECT_USERNAME,
+                     server = "rsc_server")
+        shell: Rscript {0}

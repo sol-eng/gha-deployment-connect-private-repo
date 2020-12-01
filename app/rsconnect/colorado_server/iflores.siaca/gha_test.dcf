@@ -1,0 +1,10 @@
+name: gha_test
+title:
+username: iflores.siaca
+account: iflores.siaca
+server: colorado_server
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 7877
+bundleId: 41802
+url: https://colorado.rstudio.com/rsc/content/7877/
+when: 1606835743.09139
