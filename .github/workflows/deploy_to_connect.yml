@@ -4,17 +4,17 @@ on:
       - main
       - master
 
-name: deploy_connect
+name: deployconnect
 
 jobs:
-  pkgdown:
+  deployconnect:
     runs-on: macOS-latest
     env:
       APP_NAME: "GHA_TEST"
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RSCONNECT_URL: ${{ secrets.URL }}
-      RSCONNECT_USERNAME: ${{ secrets.USERNAME }}
-      RSCONNECT_APIKEY: ${{ secrets.APIKEY }}
+      RSCONNECT_URL: ${{ secrets.RSCONNECT_URL }}
+      RSCONNECT_USERNAME: ${{ secrets.RSCONNECT_USERNAME }}
+      RSCONNECT_APIKEY: ${{ secrets.RSCONNECT_APIKEY }}
     steps:
       - uses: actions/checkout@v2
 
