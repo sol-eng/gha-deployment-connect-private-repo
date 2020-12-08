@@ -31,6 +31,11 @@ jobs:
           renv::restore()
         shell: Rscript {0}
 
+      - name: Install shinytest dependencies
+        run: |
+          shinytest::install_dependencies()
+        shell: Rscript {0}
+
       - name: Run Shinytests
         run: |
           shinytest::testApp("${{ env.APP_DIR }}")
