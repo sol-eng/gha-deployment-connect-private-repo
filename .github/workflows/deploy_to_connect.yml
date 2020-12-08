@@ -10,7 +10,8 @@ jobs:
   deployconnect:
     runs-on: macOS-latest
     env:
-      APP_NAME: "GHA_TEST"
+      APP_NAME: "GHA_SHINYTEST_RSC"
+      APP_DIR: "app"
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       RSCONNECT_URL: ${{ secrets.RSCONNECT_URL }}
       RSCONNECT_USERNAME: ${{ secrets.RSCONNECT_USERNAME }}
@@ -20,14 +21,19 @@ jobs:
 
       - uses: r-lib/actions/setup-r@master
 
-      - name: Install renv and rsconnect
+      - name: Install renv
         run: |
-          install.packages(c("renv", "rsconnect"))
+          install.packages("renv")
         shell: Rscript {0}
 
       - name: Restore Environment
         run: |
           renv::restore()
+        shell: Rscript {0}
+
+      - name: Run Shinytests
+        run: |
+          shinytest::testApp("${{ env.APP_DIR }}")
         shell: Rscript {0}
 
       - name: Authenticate with RStudio Connect
@@ -42,7 +48,7 @@ jobs:
 
       - name: Deploy App
         run: |
-          rsconnect::deployApp(appDir = 'app',
+          rsconnect::deployApp(appDir = "${{ env.APP_DIR }}",
                      appName = "${{ env.APP_NAME }}",
                      account = "${{ env.RSCONNECT_USERNAME }}",
                      server = "rsc_server")
