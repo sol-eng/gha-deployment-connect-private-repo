@@ -4,10 +4,10 @@ on:
       - main
       - master
 
-name: deployconnect
+name: deploy-to-connect
 
 jobs:
-  deployconnect:
+  deploy-to-connect:
     runs-on: macOS-latest
     env:
       APP_NAME: "GHA_SHINYTEST_RSC"
@@ -26,7 +26,7 @@ jobs:
           install.packages("renv")
         shell: Rscript {0}
 
-      - name: Restore Environment
+      - name: Restore environment
         run: |
           renv::restore()
         shell: Rscript {0}
@@ -36,7 +36,7 @@ jobs:
           shinytest::installDependencies()
         shell: Rscript {0}
 
-      - name: Run Shinytests
+      - name: Run shinytest tests
         run: |
           shinytest::testApp("${{ env.APP_DIR }}")
         shell: Rscript {0}
@@ -51,7 +51,7 @@ jobs:
                           quiet = FALSE)
         shell: Rscript {0}
 
-      - name: Deploy App
+      - name: Deploy app
         run: |
           rsconnect::deployApp(appDir = "${{ env.APP_DIR }}",
                      appName = "${{ env.APP_NAME }}",
