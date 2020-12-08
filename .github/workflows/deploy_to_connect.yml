@@ -33,7 +33,7 @@ jobs:
 
       - name: Install shinytest dependencies
         run: |
-          shinytest::install_dependencies()
+          shinytest::installDependencies()
         shell: Rscript {0}
 
       - name: Run Shinytests
