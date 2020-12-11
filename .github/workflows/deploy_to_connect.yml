@@ -54,7 +54,7 @@ jobs:
       - name: Deploy app
         run: |
           rsconnect::deployApp(appDir = "${{ env.APP_DIR }}",
-                     appName = "${{ env.APP_NAME }}",
+                     appTitle = "${{ env.APP_NAME }}",
                      account = "${{ env.RSCONNECT_USERNAME }}",
                      server = "rsc_server",
                      forceUpdate = TRUE)
