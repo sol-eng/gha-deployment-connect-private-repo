@@ -56,5 +56,6 @@ jobs:
           rsconnect::deployApp(appDir = "${{ env.APP_DIR }}",
                      appName = "${{ env.APP_NAME }}",
                      account = "${{ env.RSCONNECT_USERNAME }}",
-                     server = "rsc_server")
+                     server = "rsc_server",
+                     forceUpdate = TRUE)
         shell: Rscript {0}
