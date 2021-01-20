@@ -8,7 +8,7 @@ name: deploy-to-connect
 
 jobs:
   deploy-to-connect:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     env:
       APP_NAME: "GHA_SHINYTEST_RSC"
       APP_DIR: "app"
