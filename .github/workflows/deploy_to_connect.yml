@@ -41,6 +41,11 @@ jobs:
         run: |
           shinytest::testApp("${{ env.APP_DIR }}")
         shell: Rscript {0}
+      
+      - name: Generate manifest.json
+        run: |
+          rsconnect::writeManifest(appDir = "${{ env.APP_DIR }}")
+        shell: Rscript {0}
 
       - name: Deploy to RStudio Connect
         uses: rstudio/actions/connect-publish@main
