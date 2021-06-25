@@ -14,7 +14,6 @@ jobs:
       APP_DIR: "app"
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       RSCONNECT_URL: ${{ secrets.RSCONNECT_URL }}
-      RSCONNECT_USERNAME: ${{ secrets.RSCONNECT_USERNAME }}
       RSCONNECT_APIKEY: ${{ secrets.RSCONNECT_APIKEY }}
     steps:
       - uses: actions/checkout@v2
