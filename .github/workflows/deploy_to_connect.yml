@@ -10,7 +10,7 @@ jobs:
   deploy-to-connect:
     runs-on: macOS-latest
     env:
-      APP_NAME: "GHA_SHINYTEST_RSC"
+      APP_NAME: "GitHub_Actions_Deployment"
       APP_DIR: "app"
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       RSCONNECT_URL: ${{ secrets.RSCONNECT_URL }}
@@ -55,4 +55,3 @@ jobs:
           force: true
           dir: ${{ env.APP_DIR }}
           require-vanity-path: true
-  
