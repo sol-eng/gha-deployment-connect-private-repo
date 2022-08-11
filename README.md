@@ -1,3 +1,6 @@
+# Warning: this project as been deprecated
+Please visit [this repo](https://github.com/sol-eng/shiny-app-demo-cicd-github-actions) for the latest example of deploy content to RStudio Connect from GitHub Actions.
+
 # GitHub Actions Deployment to RStudio Connect
 
 RStudio Connect hosts a variety of data artifacts with different development
@@ -10,4 +13,3 @@ RStudio Connect hosts a variety of data artifacts with different development
 
 This repository is an example of the third deployment path using GitHub Actions. 
 
-If you want to learn more about it you can read: [https://solutions.rstudio.com/data-science-admin/deploy/github-actions/](https://solutions.rstudio.com/data-science-admin/deploy/github-actions/)
